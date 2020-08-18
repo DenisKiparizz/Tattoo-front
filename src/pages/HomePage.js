@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TattooService from "../services/tattoo-service";
 import Header from "../components/Header";
-import Profile from "../components/Profile";
+import Profile from "./Profile";
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -9,19 +9,12 @@ class HomePage extends React.Component {
         this.state = {}
     }
 
-    componentDidMount() {
-        TattooService.getAllTattoo();
-        this.setState({
-            content: localStorage.getItem("allTattoo")
-        });
-    }
 
     render() {
         return (
-            <div>
+            <div className="App">
                 <Header/>
                 <h1>This is home page</h1>
-                {/*<Profile/>*/}
             </div>
         );
     }

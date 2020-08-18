@@ -78,9 +78,9 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div className="col-md-12">
+            <div>
                 <Header/>
-                <div className="card card-container">
+                <div>
                     <img
                         src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
                         alt="profile-img"

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Redirect} from "react-router-dom";
 import AuthService from "../services/auth.service";
-import Header from "./Header";
+import Header from "../components/Header";
 
 export default class Profile extends Component {
     constructor(props) {
@@ -36,7 +36,7 @@ export default class Profile extends Component {
         const {currentUser} = this.state;
 
         return (
-            <div className="container">
+            <div>
                 {(this.state.userReady) ?
                     <div>
                         <Header/>

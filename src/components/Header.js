@@ -4,7 +4,10 @@ import Nav from "react-bootstrap/Nav"
 import NavbarToggle from "react-bootstrap/NavbarToggle";
 import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 import AuthService from "../services/auth.service";
-import {Link} from "react-router-dom";
+import logo from "../images/logo2png.png"
+
+import "../css/Header.css"
+import NavbarBrand from "react-bootstrap/NavbarBrand";
 
 class Header extends React.Component {
     constructor(props) {
@@ -36,55 +39,34 @@ class Header extends React.Component {
         const {currentUser, showModeratorBoard, showAdminBoard} = this.state;
 
         return (
-            <div>
+            <>
                 <Navbar bg="light" expand="lg">
+                    <NavbarBrand href="/"><img src={logo} alt="logo"/></NavbarBrand>
                     <NavbarToggle aria-controls="basic-navbar-nav"/>
                     <NavbarCollapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-
-                            <Nav.Link href="/">Tattoo</Nav.Link>
                             <Nav.Link href="/home">Home</Nav.Link>
-
-                            {showModeratorBoard
-                            &&
-                            (<Nav.Link href="/mod">Moderator Board</Nav.Link>)}
-
-                            {showAdminBoard
-                            &&
-                            (<Nav.Link href="/admin">Admin Board</Nav.Link>)}
-
+                            {currentUser && (<Nav.Link href="/catalog">Catalog</Nav.Link>)}
+                            {showModeratorBoard && (<Nav.Link href="/mod">Moderator Board</Nav.Link>)}
+                            {showAdminBoard && (<Nav.Link href="/admin">Admin Board</Nav.Link>)}
+                        </Nav>
+                        <Nav>
                             {currentUser
-                                ?
-                                (<div className="navbar-nav ml-auto">
-                                    <li className="nav-item">
-                                        <Link to={"/profile"} className="nav-link">
-                                            {currentUser.username}
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a href="/login" className="nav-link" onClick={this.logOut}>
-                                            LogOut
-                                        </a>
-                                    </li>
-                                </div>) : (
-                                    <div className="navbar-nav ml-auto">
-                                        <li className="nav-item">
-                                            <Link to={"/login"} className="nav-link">
-                                                Login
-                                            </Link>
-                                        </li>
-
-                                        <li className="nav-item">
-                                            <Link to={"/register"} className="nav-link">
-                                                Sign Up
-                                            </Link>
-                                        </li>
-                                    </div>
+                                ? (
+                                    <>
+                                        <Nav.Link href="/profile">{currentUser.username}</Nav.Link>
+                                        <Nav.Link href="/login" onClick={this.logOut}>LogOut</Nav.Link>
+                                    </>
+                                )
+                                : (<>
+                                        <Nav.Link href="/login">Login</Nav.Link>
+                                        <Nav.Link href="/register">Sign Up</Nav.Link>
+                                    </>
                                 )}
                         </Nav>
                     </NavbarCollapse>
                 </Navbar>
-            </div>
+            </>
         );
     }
 }
