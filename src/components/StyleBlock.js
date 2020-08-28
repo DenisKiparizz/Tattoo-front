@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import Card from 'react-bootstrap/Card'
-import "../css/LearningPathBlock.css"
-import logo from "../images/logo2png.png"
+import "../css/TattooBlock.css"
+import SwipeableTextMobileStepper from "./Test";
 
 export default class StyleBlock extends React.Component {
     constructor(props) {
@@ -17,7 +17,7 @@ export default class StyleBlock extends React.Component {
                           border="dark"
                           bg="light">
                         <Card.Body>
-                            <Card.Img src={logo}/>
+                            <SwipeableTextMobileStepper styleId = {this.props.item.id}/>
                             <Card.Title className="title-card-name">{this.props.item.style}</Card.Title>
                         </Card.Body>
                     </Card>

@@ -5,18 +5,21 @@ import NavbarToggle from "react-bootstrap/NavbarToggle";
 import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 import AuthService from "../services/auth.service";
 import logo from "../images/logo2png.png"
-
-import "../css/Header.css"
 import NavbarBrand from "react-bootstrap/NavbarBrand";
+import "../css/Header.css"
 
 class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showModeratorBoard: false,
+            showUserBoard: false,
             showAdminBoard: false,
             currentUser: undefined
         };
+    }
+
+    handleClick = (event) => {
+        event.preventDefault();
     }
 
     componentDidMount() {
@@ -25,7 +28,7 @@ class Header extends React.Component {
             this.setState({
                 currentUser: user,
                 allTattoo: localStorage.getItem("allTattoo"),
-                showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
+                showUserBoard: user.roles.includes("ROLE_USER"),
                 showAdminBoard: user.roles.includes("ROLE_ADMIN")
             });
         }
@@ -36,19 +39,20 @@ class Header extends React.Component {
     }
 
     render() {
-        const {currentUser, showModeratorBoard, showAdminBoard} = this.state;
+        const {currentUser, showAdminBoard} = this.state;
 
         return (
             <>
-                <Navbar bg="light" expand="lg">
+                <Navbar bg="dark" variant="dark">
                     <NavbarBrand href="/"><img src={logo} alt="logo"/></NavbarBrand>
                     <NavbarToggle aria-controls="basic-navbar-nav"/>
                     <NavbarCollapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
                             <Nav.Link href="/home">Home</Nav.Link>
-                            {currentUser && (<Nav.Link href="/catalog">Catalog</Nav.Link>)}
-                            {showModeratorBoard && (<Nav.Link href="/mod">Moderator Board</Nav.Link>)}
-                            {showAdminBoard && (<Nav.Link href="/admin">Admin Board</Nav.Link>)}
+                            {(currentUser && !showAdminBoard) && (<Nav.Link href="/catalog">Catalog</Nav.Link>)}
+                            {showAdminBoard && (<Nav.Link href="/adminTattoo">Tattoo</Nav.Link>)}
+                            {showAdminBoard && (<Nav.Link href="/adminOrders">Orders</Nav.Link>)}
+                            {showAdminBoard && (<Nav.Link href="/adminUsers">Users</Nav.Link>)}
                         </Nav>
                         <Nav>
                             {currentUser

@@ -2,8 +2,10 @@ import React, {Component} from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import AuthService from "../services/auth.service";
-import Header from "../components/Header";
+import AuthService from "../../services/auth.service";
+import Header from "../../components/Header";
+import "../../css/Login.css"
+import Footer from "../../components/Footer";
 
 const required = value => {
     if (!value) {
@@ -27,15 +29,10 @@ export default class Login extends Component {
         };
     }
 
-    onChangeUsername = (e) => {
+    onHandleChange = (event) => {
+        const {name, value} = event.target;
         this.setState({
-            username: e.target.value
-        });
-    }
-
-    onChangePassword = (e) => {
-        this.setState({
-            password: e.target.value
+            [name]: value
         });
     }
 
@@ -50,9 +47,8 @@ export default class Login extends Component {
         this.form.validateAll();
 
         if (this.checkBtn.context._errors.length === 0) {
-            AuthService.login(this.state.username, this.state.password).then(
-                () => {
-                    this.props.history.push("/profile");
+            AuthService.login(this.state.username, this.state.password)
+                .then(() => {this.props.history.push("/home");
                     window.location.reload();
                 },
                 error => {
@@ -84,14 +80,13 @@ export default class Login extends Component {
                     <img
                         src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
                         alt="profile-img"
-                        className="profile-img-card"
+                        className="fill-form"
                     />
-
                     <Form onSubmit={this.handleLogin}
+                          className="fill-form"
                           ref={c => {
                               this.form = c;
-                          }}
-                    >
+                          }}>
                         <div className="form-group">
                             <label htmlFor="username">Username</label>
                             <Input
@@ -99,7 +94,7 @@ export default class Login extends Component {
                                 className="form-control"
                                 name="username"
                                 value={this.state.username}
-                                onChange={this.onChangeUsername}
+                                onChange={this.onHandleChange}
                                 validations={[required]}
                             />
                         </div>
@@ -111,16 +106,13 @@ export default class Login extends Component {
                                 className="form-control"
                                 name="password"
                                 value={this.state.password}
-                                onChange={this.onChangePassword}
+                                onChange={this.onHandleChange}
                                 validations={[required]}
                             />
                         </div>
 
                         <div className="form-group">
-                            <button
-                                className="btn btn-primary btn-block"
-                                disabled={this.state.loading}
-                            >
+                            <button className="btn btn-primary btn-block" disabled={this.state.loading}>
                                 {this.state.loading && (
                                     <span className="spinner-border spinner-border-sm"></span>
                                 )}
@@ -137,12 +129,11 @@ export default class Login extends Component {
                         )}
                         <CheckButton
                             style={{display: "none"}}
-                            ref={c => {
-                                this.checkBtn = c;
-                            }}
+                            ref={c => {this.checkBtn = c;}}
                         />
                     </Form>
                 </div>
+                <Footer/>
             </div>
         );
     }

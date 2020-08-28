@@ -3,9 +3,10 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import {isEmail} from "validator";
-
-import AuthService from "../services/auth.service";
-import Header from "../components/Header";
+import AuthService from "../../services/auth.service";
+import Header from "../../components/Header";
+import "../../css/Login.css"
+import Footer from "../../components/Footer";
 
 const required = value => {
     if (!value) {
@@ -59,27 +60,15 @@ export default class Register extends Component {
         };
     }
 
-    onChangeUsername = (e) => {
+    onHandleChange = (event) => {
+        const {name, value} = event.target;
         this.setState({
-            username: e.target.value
-        });
-    }
-
-    onChangeEmail = (e) => {
-        this.setState({
-            email: e.target.value
-        });
-    }
-
-    onChangePassword = (e) => {
-        this.setState({
-            password: e.target.value
+            [name]: value
         });
     }
 
     handleRegister = (e) => {
         e.preventDefault();
-
         this.setState({
             message: "",
             successful: false
@@ -119,16 +108,18 @@ export default class Register extends Component {
     render() {
         return (
             <div>
-              <Header/>
-              <div>
+                <Header/>
+                <div>
                     <img
                         src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
                         alt="profile-img"
-                        className="profile-img-card"
+                        className="fill-form"
                     />
-
                     <Form onSubmit={this.handleRegister}
-                        ref={c => {this.form = c;}}>
+                          className="fill-form"
+                          ref={c => {
+                              this.form = c;
+                          }}>
                         {!this.state.successful && (
                             <div>
                                 <div className="form-group">
@@ -138,11 +129,10 @@ export default class Register extends Component {
                                         className="form-control"
                                         name="username"
                                         value={this.state.username}
-                                        onChange={this.onChangeUsername}
+                                        onChange={this.onHandleChange}
                                         validations={[required, vusername]}
                                     />
                                 </div>
-
                                 <div className="form-group">
                                     <label htmlFor="email">Email</label>
                                     <Input
@@ -150,11 +140,10 @@ export default class Register extends Component {
                                         className="form-control"
                                         name="email"
                                         value={this.state.email}
-                                        onChange={this.onChangeEmail}
+                                        onChange={this.onHandleChange}
                                         validations={[required, email]}
                                     />
                                 </div>
-
                                 <div className="form-group">
                                     <label htmlFor="password">Password</label>
                                     <Input
@@ -162,17 +151,15 @@ export default class Register extends Component {
                                         className="form-control"
                                         name="password"
                                         value={this.state.password}
-                                        onChange={this.onChangePassword}
+                                        onChange={this.onHandleChange}
                                         validations={[required, vpassword]}
                                     />
                                 </div>
-
                                 <div className="form-group">
                                     <button className="btn btn-primary btn-block">Sign Up</button>
                                 </div>
                             </div>
                         )}
-
                         {this.state.message && (
                             <div className="form-group">
                                 <div
@@ -195,6 +182,7 @@ export default class Register extends Component {
                         />
                     </Form>
                 </div>
+                <Footer/>
             </div>
         );
     }

@@ -1,0 +1,104 @@
+.card:hover {
+    box-shadow: 0 0 40px #a0a0a0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.card-body {
+    background: #d5d5d5;
+    max-width: 400px;
+}
+
+.card {
+    border-radius: 0.5rem;
+    margin: 40px;
+    max-width: 400px;
+    height: auto;
+}
+
+.card-title {
+    margin-top: 4%;
+    font-size: 25px;
+    font-family: 'initial';
+    color: red;
+    text-align: center;
+}
+
+div:focus {
+    outline: none;
+}
+
+.card-img {
+    margin-top: 5px;
+}
+
+.tattoo {
+    padding: 20px 20px 20px 60px;
+    display: block;
+}
+
+.tattoo-block {
+    float: left;
+    clear: both;
+    width: 20px;
+}
+
+.tattoo-img {
+    display: flex;
+    width: 400px;
+    height: auto;
+    padding: 1.25rem;
+    justify-content: space-between;
+    clear: both;
+}
+
+.block {
+    padding: 30px;
+    border-left: 6px solid red;
+    background-color: lightgrey;
+    display: inline-block;
+    margin: 40px;
+}
+
+.layer1 {
+    padding: 5px;
+    float: left;
+    width: 600px;
+}
+
+.layer2 {
+    padding-top: 80px;
+    width: 600px;
+    float: left;
+}
+
+.MuiDialog-paperWidthSm {
+    max-width: 600px;
+    width: 900px;
+}
+
+.MuiSelect-select.MuiSelect-select {
+    padding-right: 280px;
+}
+
+.errors {
+    color: red;
+}
+
+.window {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.text-order {
+    text-align: end;
+    display: inline-block;
+    color: red;
+}
+
+.style-title {
+    text-shadow: 4px 3px 2px black, 0 0 1em red;
+    text-align: right;
+    padding-top: 30px;
+    padding-right: 30px;
+    font-family: cursive;
+}

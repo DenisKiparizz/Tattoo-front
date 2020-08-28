@@ -1,0 +1,18 @@
+.mnd-supertop-box {
+    background-image: url("https://i0.wp.com/gogonihon.com/wp-content/uploads/2018/09/40621352411_c821f3702a_b-1.jpg?fit=1015%2C632&ssl=1");
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: calc(100vh - 156px);
+    min-height: 520px;
+    margin: 0 0 66px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.home-title{
+    color: #d5d5d5;
+    font-size: 77px;
+    font-family: fantasy;
+}

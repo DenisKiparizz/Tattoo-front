@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import TattooService from "../services/tattoo-service";
+import React from 'react';
 import Header from "../components/Header";
-import Profile from "./Profile";
+import Footer from "../components/Footer";
+import "../css/HomePage.css"
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -9,12 +9,12 @@ class HomePage extends React.Component {
         this.state = {}
     }
 
-
     render() {
         return (
-            <div className="App">
+            <div className="mnd-supertop-box ">
                 <Header/>
-                <h1>This is home page</h1>
+                <h1 className="home-title">This is home page</h1>
+                {/*<Footer/>*/}
             </div>
         );
     }

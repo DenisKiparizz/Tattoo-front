@@ -1,15 +1,17 @@
-import React, {Component} from 'react';
-import Header from "../components/Header";
+import React from 'react';
+import Header from "../../components/Header";
 import Slider from "react-slick";
-import StyleService from "../services/style-service"
+import StyleService from "../../services/style-service"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../css/Slick.css"
-import StyleBlock from "../components/StyleBlock";
-import "../css/LearningPathBlock.css"
+import "../../css/Slick.css"
+import "../../css/TattooBlock.css"
+import Footer from "../../components/Footer";
+import StyleBlock from "../../components/StyleBlock";
+import "../../css/Tattoo.css"
 
 
-export default class Catalog extends React.Component {
+export default class StyleCatalog extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,7 +23,6 @@ export default class Catalog extends React.Component {
         StyleService.getAllStyle()
             .then(response => {
                 let allStyles = response.data
-                localStorage.setItem("allStyles", JSON.stringify(allStyles))
                 this.setState({
                     allStyles: allStyles
                 })
@@ -31,7 +32,8 @@ export default class Catalog extends React.Component {
     getTattoo = () => this.state.allStyles.map(element => {
         return (
             <div className="dashboard-image">
-                <StyleBlock key={element.id} item={element}/>
+                <StyleBlock key={element.id}
+                            item={element}/>
             </div>
         )
     })
@@ -48,13 +50,13 @@ export default class Catalog extends React.Component {
             slidesPerRow: 3
         };
         return (
-
-            <div>
+            <div className="base">
                 <Header/>
-                <h1>This is all Tattoo</h1>
+                <h1 className="style-title">Select your favorite style</h1>
                 <Slider {...settings}>
                     {this.getTattoo()}
                 </Slider>
+                <Footer/>
             </div>
         );
     }
