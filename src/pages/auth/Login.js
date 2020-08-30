@@ -6,6 +6,11 @@ import AuthService from "../../services/auth.service";
 import Header from "../../components/Header";
 import "../../css/Login.css"
 import Footer from "../../components/Footer";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
 
 const required = value => {
     if (!value) {
@@ -20,7 +25,6 @@ const required = value => {
 export default class Login extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             username: "",
             password: "",
@@ -38,7 +42,6 @@ export default class Login extends Component {
 
     handleLogin = (e) => {
         e.preventDefault();
-
         this.setState({
             message: "",
             loading: true
@@ -48,23 +51,24 @@ export default class Login extends Component {
 
         if (this.checkBtn.context._errors.length === 0) {
             AuthService.login(this.state.username, this.state.password)
-                .then(() => {this.props.history.push("/home");
-                    window.location.reload();
-                },
-                error => {
-                    const resMessage =
-                        (error.response &&
-                            error.response.data &&
-                            error.response.data.message) ||
-                        error.message ||
-                        error.toString();
+                .then(() => {
+                        this.props.history.push("/home");
+                        window.location.reload();
+                    },
+                    error => {
+                        const resMessage =
+                            (error.response &&
+                                error.response.data &&
+                                error.response.data.message) ||
+                            error.message ||
+                            error.toString();
 
-                    this.setState({
-                        loading: false,
-                        message: resMessage
-                    });
-                }
-            );
+                        this.setState({
+                            loading: false,
+                            message: resMessage
+                        });
+                    }
+                );
         } else {
             this.setState({
                 loading: false
@@ -76,7 +80,7 @@ export default class Login extends Component {
         return (
             <div>
                 <Header/>
-                <div>
+                <div className="back-img">
                     <img
                         src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
                         alt="profile-img"
@@ -87,38 +91,40 @@ export default class Login extends Component {
                           ref={c => {
                               this.form = c;
                           }}>
-                        <div className="form-group">
-                            <label htmlFor="username">Username</label>
-                            <Input
-                                type="text"
-                                className="form-control"
-                                name="username"
-                                value={this.state.username}
-                                onChange={this.onHandleChange}
-                                validations={[required]}
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <Input
-                                type="password"
-                                className="form-control"
-                                name="password"
-                                value={this.state.password}
-                                onChange={this.onHandleChange}
-                                validations={[required]}
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <button className="btn btn-primary btn-block" disabled={this.state.loading}>
-                                {this.state.loading && (
-                                    <span className="spinner-border spinner-border-sm"></span>
-                                )}
-                                <span>Login</span>
-                            </button>
-                        </div>
+                        <label htmlFor="username">Username</label>
+                        <Input
+                            type="text"
+                            className="form-control"
+                            name="username"
+                            value={this.state.username}
+                            onChange={this.onHandleChange}
+                            validations={[required]}
+                        />
+                        <label htmlFor="password">Password</label>
+                        <Input
+                            type="password"
+                            className="form-control"
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.onHandleChange}
+                            validations={[required]}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox value="remember" color="primary"/>}
+                            label="Remember me"/>
+                        <Button type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary">
+                            Sign In
+                        </Button>
+                        <Grid container>
+                            <Grid item>
+                                <Link href="/register" variant="body2">
+                                    {"Don't have an account? Sign Up"}
+                                </Link>
+                            </Grid>
+                        </Grid>
 
                         {this.state.message && (
                             <div className="form-group">
@@ -129,7 +135,9 @@ export default class Login extends Component {
                         )}
                         <CheckButton
                             style={{display: "none"}}
-                            ref={c => {this.checkBtn = c;}}
+                            ref={c => {
+                                this.checkBtn = c;
+                            }}
                         />
                     </Form>
                 </div>

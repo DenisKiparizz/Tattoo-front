@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import OrderService from "../services/order-service"
@@ -12,16 +12,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import TattooService from "../services/tattoo-service";
 import InputLabel from "@material-ui/core/InputLabel";
 import "../css/OrderWindow.css"
-
-const required = value => {
-    if (!value) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                This field is required!
-            </div>
-        );
-    }
-};
 
 class TattooBlock extends React.Component {
     constructor(props) {
@@ -137,14 +127,6 @@ class TattooBlock extends React.Component {
                             {this.props.item.cost}
                         </div>
                     </h2>
-                    {/*<form noValidate>*/}
-                    {/*    <TextField*/}
-                    {/*        id="datetime-local"*/}
-                    {/*        label="Next appointment"*/}
-                    {/*        type="datetime-local"*/}
-                    {/*        defaultValue="2017-05-24T10:30"*/}
-                    {/*    />*/}
-                    {/*</form>*/}
                     <InputLabel>Select part of body</InputLabel>
                     <Select
                         typeof="text"

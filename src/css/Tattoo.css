@@ -1,3 +1,9 @@
-.base{
+.base {
     background-image: url("https://img.freepik.com/free-vector/elegant-white-background-with-shiny-lines_1017-17580.jpg?size=626&ext=jpg");
+}
+
+.slide {
+    width: 30%;
+    margin: 0 auto;
+    text-align: center;
 }

@@ -45,7 +45,6 @@ class SwipeableTextMobileStepper extends React.Component {
         )
     })
 
-
     render() {
         const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 

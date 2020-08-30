@@ -9,6 +9,7 @@ import "../../css/TattooBlock.css"
 import Footer from "../../components/Footer";
 import StyleBlock from "../../components/StyleBlock";
 import "../../css/Tattoo.css"
+import ImageList from "../../components/ImageList";
 
 
 export default class StyleCatalog extends React.Component {
@@ -49,6 +50,7 @@ export default class StyleCatalog extends React.Component {
             rows: 1,
             slidesPerRow: 3
         };
+
         return (
             <div className="base">
                 <Header/>
@@ -56,6 +58,10 @@ export default class StyleCatalog extends React.Component {
                 <Slider {...settings}>
                     {this.getTattoo()}
                 </Slider>
+                <h1 className="stylePage-title">Our works</h1>
+                <div className="slide">
+                    <ImageList/>
+                </div>
                 <Footer/>
             </div>
         );

@@ -8,8 +8,7 @@ export default class TattooInOrder extends React.Component {
             order: [],
             tattoo: [],
             userInfo: [],
-            style: "",
-            totalPrice:' '
+            style: ""
         }
     }
 
@@ -35,7 +34,6 @@ export default class TattooInOrder extends React.Component {
                 <td>{this.state.style}</td>
                 <td>{this.state.order.price}</td>
                 <td>{date.getUTCDate()}-{date.getUTCMonth()}-{date.getFullYear()}</td>
-                {this.state.totalPrice}
             </>
         );
     }

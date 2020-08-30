@@ -162,13 +162,11 @@ export default class Register extends Component {
                         )}
                         {this.state.message && (
                             <div className="form-group">
-                                <div
-                                    className={
-                                        this.state.successful
-                                            ? "alert alert-success"
-                                            : "alert alert-danger"
-                                    }
-                                    role="alert"
+                                <div className={this.state.successful
+                                    ? "alert alert-success"
+                                    : "alert alert-danger"
+                                }
+                                     role="alert"
                                 >
                                     {this.state.message}
                                 </div>

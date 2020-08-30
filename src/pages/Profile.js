@@ -8,7 +8,6 @@ import Button from "react-bootstrap/Button";
 import "../css/Tables.css"
 import Footer from "../components/Footer";
 
-
 export default class Profile extends Component {
     constructor(props) {
         super(props);
@@ -72,8 +71,7 @@ export default class Profile extends Component {
                     <h3>{currentUser.email}</h3>
                     <strong>Authorities:</strong>
                     <ul>
-                        {currentUser.roles &&
-                        currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
+                        {currentUser.roles && currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
                     </ul>
                 </div>
                 <h1>My Orders</h1>

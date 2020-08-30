@@ -6,9 +6,7 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import {MDBTableBody, MDBTableHead} from "mdbreact";
 import Footer from "../../components/Footer";
-import SwipeableTextMobileStepper from "../../components/Test";
-import {autoPlay} from "react-swipeable-views-utils";
-import SwipeableViews from "react-swipeable-views";
+import SwipeableTextMobileStepper from "../../components/SwipeableTextMobileStepper";
 
 export default class AdminUser extends React.Component {
     constructor(props) {

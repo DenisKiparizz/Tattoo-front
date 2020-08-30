@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React  from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/auth/Login";
@@ -8,7 +8,7 @@ import BoardAdmin from "./pages/admin/AdminAllTattoo";
 import HomePage from "./pages/HomePage";
 import StyleCatalog from "./pages/user/StyleCatalog";
 import Tattoo from "./pages/user/Tattoo";
-import EditCreateTattoo from "./components/EditCreateTattoo";
+import EditCreateTattoo from "./pages/admin/EditCreateTattoo";
 import AdminOrders from "./pages/admin/AdminOrders";
 import AdminUser from "./pages/admin/AdminUser";
 

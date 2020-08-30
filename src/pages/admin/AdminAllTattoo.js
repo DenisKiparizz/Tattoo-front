@@ -6,9 +6,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Footer from "../../components/Footer";
 import {ButtonGroup} from "react-bootstrap";
-import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from '@material-ui/icons/Delete';
-import {makeStyles} from '@material-ui/core/styles';
+
 
 
 export default class BoardAdmin extends React.Component {
@@ -70,6 +68,7 @@ export default class BoardAdmin extends React.Component {
     })
 
     render() {
+
         return (
             <div>
                 <Header/>

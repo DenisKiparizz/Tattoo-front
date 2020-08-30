@@ -1,5 +1,5 @@
 .mnd-supertop-box {
-    background-image: url("https://i0.wp.com/gogonihon.com/wp-content/uploads/2018/09/40621352411_c821f3702a_b-1.jpg?fit=1015%2C632&ssl=1");
+    background-image: url("https://cdn.improb.com/wp-content/uploads/2018/02/best-japanese-tattoos-for-men.jpg");
     display: table;
     table-layout: fixed;
     width: 100%;
@@ -11,8 +11,48 @@
     background-repeat: no-repeat;
 }
 
-.home-title{
+.home-colour {
+    background-color: #e2e2e2;
+}
+
+.home-title {
+    padding-bottom: 70px;
     color: #d5d5d5;
     font-size: 77px;
     font-family: fantasy;
+}
+
+.stylePage-title {
+    padding-top: 30px;
+    text-align: center;
+    padding-bottom: 70px;
+    color: #ff6767;
+    font-size: 77px;
+    font-family: fantasy;
+}
+
+.home-title-center {
+    padding-bottom: 70px;
+    text-align: center;
+    color: #262222;
+    font-size: 77px;
+    font-family: fantasy;
+}
+
+.block1 {
+    padding: 30px;
+    display: inline-block;
+    margin: 40px;
+}
+
+.layer11 {
+    padding: 5px;
+    float: left;
+    width: 1000px
+}
+
+.layer21 {
+    padding-top: 80px;
+    width: 600px;
+    float: left;
 }
