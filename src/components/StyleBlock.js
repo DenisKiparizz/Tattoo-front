@@ -2,11 +2,28 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import Card from 'react-bootstrap/Card'
 import "../css/TattooBlock.css"
-import SwipeableTextMobileStepper from "./SwipeableTextMobileStepper";
+import japanise from "../images/Japanise.jpg"
+import chicano from "../images/Chikano.png"
+import oldSchool from "../images/OldSchool.jpg"
+import traditional from "../images/Traditional.jpg"
+import logo from "../images/Logo.png"
+
 
 export default class StyleBlock extends React.Component {
-    constructor(props) {
-        super(props);
+
+    getAppropriateImage = (style) => {
+        switch (style) {
+            case "JAPANESE":
+                return japanise
+            case "CHICANO":
+                return chicano
+            case "OLD SCHOOL":
+                return oldSchool
+            case "TRADITIONAL":
+                return traditional
+            default:
+                return logo
+        }
     }
 
     render() {
@@ -17,8 +34,9 @@ export default class StyleBlock extends React.Component {
                           border="dark"
                           bg="light">
                         <Card.Body>
-                            <SwipeableTextMobileStepper styleId={this.props.item.id}/>
-                            <Card.Title className="title-card-name">{this.props.item.style}</Card.Title>
+                            {/*<SwipeableTextMobileStepper styleId={this.props.item.id}/>*/}
+                            <Card.Img variant="top" src={this.getAppropriateImage(this.props.item.style)}/>
+                            <Card.Title>{this.props.item.style}</Card.Title>
                         </Card.Body>
                     </Card>
                 </Link>

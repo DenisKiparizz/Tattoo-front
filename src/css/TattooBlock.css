@@ -85,6 +85,10 @@ div:focus {
     color: red;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .window {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

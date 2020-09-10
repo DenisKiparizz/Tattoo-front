@@ -22,24 +22,24 @@ class TattooService {
 
     updateTattoo(id, picture, pictureUrl, description, cost, style) {
         return axios.put(API_URL + id, {
-            headers: authHeader(),
-            picture,
-            pictureUrl,
-            description,
-            cost,
-            style
-        })
+                picture,
+                pictureUrl,
+                description,
+                cost,
+                style
+            }, {headers: authHeader()}
+        )
     }
 
     createTattoo(picture, pictureUrl, description, cost, style) {
         return axios.post(API_URL, {
-            headers: authHeader(),
-            picture,
-            pictureUrl,
-            description,
-            cost,
-            style
-        });
+                picture,
+                pictureUrl,
+                description,
+                cost,
+                style
+            }, {headers: authHeader()}
+        );
     }
 }
 

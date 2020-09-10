@@ -13,9 +13,6 @@ import AdminOrders from "./pages/admin/AdminOrders";
 import AdminUser from "./pages/admin/AdminUser";
 
 export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

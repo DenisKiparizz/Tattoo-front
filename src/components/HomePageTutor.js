@@ -46,7 +46,7 @@ export default function CustomizedTimeline() {
                     </TimelineSeparator>
                     <TimelineContent>
                         <Paper elevation={3} className={classes.paper}>
-                            <Typography variant="h8" component="h1">
+                            <Typography variant="h6" component="h1">
                                 Login
                             </Typography>
                             <Typography>If there arent your account you can create this one</Typography>
@@ -66,7 +66,7 @@ export default function CustomizedTimeline() {
                     </TimelineSeparator>
                     <TimelineContent>
                         <Paper elevation={3} className={classes.paper}>
-                            <Typography variant="h8" component="h1">
+                            <Typography variant="h6" component="h1">
                                 Choose
                             </Typography>
                             <Typography>Choose your favorite tattoo</Typography>
@@ -86,7 +86,7 @@ export default function CustomizedTimeline() {
                     </TimelineSeparator>
                     <TimelineContent>
                         <Paper elevation={3} className={classes.paper}>
-                            <Typography variant="h8" component="h1">
+                            <Typography variant="h6" component="h1">
                                 Add to order
                             </Typography>
                             <Typography>Add tattoo to your order list. Dont forget to select part of body</Typography>
@@ -105,7 +105,7 @@ export default function CustomizedTimeline() {
                     </TimelineSeparator>
                     <TimelineContent>
                         <Paper elevation={3} className={classes.paper}>
-                            <Typography variant="h8" component="h1">
+                            <Typography variant="h6" component="h1">
                                 Waiting
                             </Typography>
                             <Typography>We will contact you shortly</Typography>

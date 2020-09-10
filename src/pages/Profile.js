@@ -15,8 +15,18 @@ export default class Profile extends Component {
             redirect: null,
             userReady: false,
             currentUser: {username: ""},
-            allOrders: []
+            allOrders: [],
+            totalPrice: ''
         };
+    }
+
+    getTotalPrice = (userId) => {
+        OrderService.getTotalPrice(userId)
+            .then(resp => {
+                this.setState({
+                    totalPrice: resp.data
+                })
+            })
     }
 
     componentDidMount() {
@@ -33,6 +43,7 @@ export default class Profile extends Component {
                     allOrders: all,
                 })
             })
+        this.getTotalPrice(currentUser.id)
     }
 
     delete(id) {
@@ -40,9 +51,11 @@ export default class Profile extends Component {
             .then(() => {
                 let updatedGroups = [...this.state.allOrders].filter(i => i.id !== id);
                 this.setState({
-                    allOrders: updatedGroups
+                    allOrders: updatedGroups,
                 })
-            })
+            }).then(() => {
+            this.getTotalPrice(this.state.currentUser.id)
+        })
     }
 
     getUserOrders = () => this.state.allOrders.map(item => {
@@ -52,6 +65,7 @@ export default class Profile extends Component {
                     key={item.id}
                     order={item}
                     tattoo={item.tattooId}
+                    totalPrice={this.state.totalPrice}
                 />
                 <td>
                     <Button size="sm" variant="danger" onClick={() => this.delete(item.id)}>Delete</Button>
@@ -66,15 +80,9 @@ export default class Profile extends Component {
             <>
                 <Header/>
                 <div>
-                    <h3>{currentUser.id}</h3>
-                    <h3>{currentUser.username}</h3>
-                    <h3>{currentUser.email}</h3>
-                    <strong>Authorities:</strong>
-                    <ul>
-                        {currentUser.roles && currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-                    </ul>
+                    <h3 className="profile-title">{currentUser.email} </h3>
                 </div>
-                <h1>My Orders</h1>
+                <h1 className="style-title">Your Orders</h1>
 
                 <div className="profile-table">
                     <Table striped bordered hover variant="dark">
@@ -92,6 +100,9 @@ export default class Profile extends Component {
                         <tbody>
                         {this.getUserOrders()}
                         </tbody>
+                        <thead>
+                        <h5 className="total-price">{this.state.totalPrice}</h5>
+                        </thead>
                     </Table>
                 </div>
                 <Footer/>

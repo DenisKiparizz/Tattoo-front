@@ -9,4 +9,4 @@ class StyleService {
     }
 }
 
-export default new StyleService;
+export default new StyleService();

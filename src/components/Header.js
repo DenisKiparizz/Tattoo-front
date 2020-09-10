@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav"
 import NavbarToggle from "react-bootstrap/NavbarToggle";
 import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 import AuthService from "../services/auth.service";
-import logo from "../images/logo2png.png"
+import logo from "../images/Logo.png"
 import NavbarBrand from "react-bootstrap/NavbarBrand";
 import "../css/Header.css"
 

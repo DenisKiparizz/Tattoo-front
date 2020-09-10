@@ -7,11 +7,11 @@ class OrderService {
 
     createOrder(part, tattooId, userId) {
         return axios.post(API_URL, {
-            headers: authHeader(),
-            part,
-            tattooId,
-            userId
-        })
+                part,
+                tattooId,
+                userId
+            }, {headers: authHeader()}
+        )
     }
 
     getOrdersByUserId(userId) {
@@ -25,6 +25,10 @@ class OrderService {
     getAllOrders() {
         return axios.get(API_URL, {headers: authHeader()})
     }
+
+    getTotalPrice(userId) {
+        return axios.get(API_URL + "price/" + userId, {headers: authHeader()})
+    }
 }
 
-export default new OrderService;
+export default new OrderService();
