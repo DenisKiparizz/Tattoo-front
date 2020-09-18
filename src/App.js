@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/auth/Login";
@@ -11,6 +11,10 @@ import Tattoo from "./pages/user/Tattoo";
 import EditCreateTattoo from "./pages/admin/EditCreateTattoo";
 import AdminOrders from "./pages/admin/AdminOrders";
 import AdminUser from "./pages/admin/AdminUser";
+import UserOrder from "./pages/user/UserOrder";
+import AddReviewForm from "./pages/user/AddReviewForm";
+import Reviews from "./pages/user/Reviews";
+import AdminReview from "./pages/admin/AdminReview";
 
 export default class App extends React.Component {
 
@@ -25,13 +29,18 @@ export default class App extends React.Component {
                     <Route exact path="/catalog" component={StyleCatalog}/>
                     <Route exact path="/tattoo/:id"
                            render={(props) => {
-                               return (<Tattoo {...props}/>)}}
+                               return (<Tattoo {...props}/>)
+                           }}
                            component={Tattoo}/>
                     <Route exact path="/edit/:id" component={EditCreateTattoo}/>
                     <Route path="/edit" component={EditCreateTattoo}/>
                     <Route path="/adminTattoo" component={BoardAdmin}/>
                     <Route path="/adminOrders" component={AdminOrders}/>
                     <Route path="/adminUsers" component={AdminUser}/>
+                    <Route path="/orders" component={UserOrder}/>
+                    <Route exact path="/addReview/:id" component={AddReviewForm}/>
+                    <Route path="/review" component={Reviews}/>
+                    <Route path="/adminReview" component={AdminReview}/>
                 </Switch>
             </Router>
         );

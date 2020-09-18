@@ -15,7 +15,7 @@ export default class TattooInOrder extends React.Component {
     componentDidMount() {
         TattooService.getTattooById(this.props.order.tattooId)
             .then(resp => {
-                let tattoo = resp.data;
+                let tattoo = resp.data
                 this.setState({
                     order: this.props.order,
                     tattoo: tattoo,
@@ -34,6 +34,7 @@ export default class TattooInOrder extends React.Component {
                 <td>{this.state.style}</td>
                 <td>{this.state.order.price}</td>
                 <td>{date.getUTCDate()}-{date.getUTCMonth()}-{date.getFullYear()}</td>
+                <td>{this.state.order.status}</td>
             </>
         );
     }

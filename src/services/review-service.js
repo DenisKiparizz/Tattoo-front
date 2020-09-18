@@ -14,6 +14,14 @@ class ReviewService {
     getReview() {
         return axios.get(API_URL, {headers: authHeader()})
     }
+
+    getReviewByOrderId(id) {
+        return axios.get(API_URL + id, {headers: authHeader()})
+    }
+
+    deleteReview(id) {
+        return axios.delete(API_URL + id, {headers: authHeader()})
+    }
 }
 
 export default new ReviewService();

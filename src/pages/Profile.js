@@ -15,18 +15,8 @@ export default class Profile extends Component {
             redirect: null,
             userReady: false,
             currentUser: {username: ""},
-            allOrders: [],
-            totalPrice: ''
+            allOrders: []
         };
-    }
-
-    getTotalPrice = (userId) => {
-        OrderService.getTotalPrice(userId)
-            .then(resp => {
-                this.setState({
-                    totalPrice: resp.data
-                })
-            })
     }
 
     componentDidMount() {
@@ -43,7 +33,6 @@ export default class Profile extends Component {
                     allOrders: all,
                 })
             })
-        this.getTotalPrice(currentUser.id)
     }
 
     delete(id) {
@@ -54,11 +43,10 @@ export default class Profile extends Component {
                     allOrders: updatedGroups,
                 })
             }).then(() => {
-            this.getTotalPrice(this.state.currentUser.id)
         })
     }
 
-    getUserOrders = () => this.state.allOrders.map(item => {
+    getUserOrders = () => this.state.allOrders.filter(r => r.status === "ACTIVE").map(item => {
         return (
             <tr>
                 <TattooInOrder
@@ -94,15 +82,13 @@ export default class Profile extends Component {
                             <th>Style</th>
                             <th>Price</th>
                             <th>Created date</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         {this.getUserOrders()}
                         </tbody>
-                        <thead>
-                        <h5 className="total-price">{this.state.totalPrice}</h5>
-                        </thead>
                     </Table>
                 </div>
                 <Footer/>

@@ -1,0 +1,15 @@
+.review-form{
+    padding: 40px;
+    margin: 20px 400px auto;
+    width: 600px;
+    height: 600px;
+    background-color: #aeaeae;
+}
+.titles {
+    padding-top: 30px;
+    text-align: right;
+    color: #ff0000;
+    font-size: 36px;
+    font-family: cursive;
+}
+

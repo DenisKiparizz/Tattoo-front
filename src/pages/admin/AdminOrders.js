@@ -21,7 +21,6 @@ export default class AdminOrders extends React.Component {
                 let all = (resp.data);
                 this.setState({
                     orders: all,
-                    userId: resp.data.userId
                 })
             })
     }
@@ -29,10 +28,23 @@ export default class AdminOrders extends React.Component {
     delete(id) {
         OrderService.deleteOrder(id)
             .then(() => {
-                let updatedGroups = [...this.state.orders].filter(i => i.id !== id);
+                let updateOrderAfterDelete = [...this.state.orders].filter(i => i.id !== id);
                 this.setState({
-                    orders: updatedGroups
+                    orders: updateOrderAfterDelete
                 })
+            })
+    }
+
+    updateStatusClose(id) {
+        OrderService.updateOrderStatusClose(id)
+            .then(() => {
+                OrderService.getAllOrders()
+                    .then(resp => {
+                        let all = (resp.data);
+                        this.setState({
+                            orders: all,
+                        })
+                    })
             })
     }
 
@@ -42,9 +54,22 @@ export default class AdminOrders extends React.Component {
             <tr>
                 <AdminOrderTable key={item.id}
                                  date={date}
-                                 data={item}/>
+                                 data={item}
+                                 status={item.status}
+                />
                 <td>
                     <Button size="sm" variant="danger" onClick={() => this.delete(item.id)}>Delete</Button>
+                    {(item.status === "ACTIVE")
+                        ?
+                        <Button size="sm"
+                                variant="warning"
+                                onClick={() => this.updateStatusClose(item.id)}>
+                            Close
+                        </Button>
+                        :
+                        null
+                    }
+
                 </td>
             </tr>
         )
@@ -67,6 +92,7 @@ export default class AdminOrders extends React.Component {
                             <th>Picture</th>
                             <th>Style</th>
                             <th>Created date</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </MDBTableHead>

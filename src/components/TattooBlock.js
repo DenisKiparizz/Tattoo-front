@@ -111,7 +111,7 @@ class TattooBlock extends React.Component {
                 open={this.state.open}
                 onClose={this.consthandleClose}>
                 <DialogTitle>Submit Order</DialogTitle>
-                <DialogContent >
+                <DialogContent>
                     <h3>Tattoo Picture:
                         <div className="text-order">
                             {this.props.item.picture}
@@ -169,7 +169,7 @@ class TattooBlock extends React.Component {
         let status = false;
         let orderId;
         const showButton = () => this.state.allOrders.map(resp => {
-            if (resp.tattooId === this.props.item.id) {
+            if (resp.tattooId === this.props.item.id && resp.status !== "CLOSED") {
                 status = true;
                 orderId = resp.id
             }

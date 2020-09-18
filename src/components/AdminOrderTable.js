@@ -44,6 +44,7 @@ class AdminOrderTable extends React.Component {
                 <td>{this.state.tattoo.picture}</td>
                 <td>{this.state.style}</td>
                 <td>{this.props.date.getUTCDate()}-{this.props.date.getUTCMonth()}-{this.props.date.getFullYear()}</td>
+                <td>{this.props.status}</td>
             </>
         );
     }

@@ -18,10 +18,6 @@ class Header extends React.Component {
         };
     }
 
-    handleClick = (event) => {
-        event.preventDefault();
-    }
-
     componentDidMount() {
         const user = AuthService.getCurrentUser();
         if (user) {
@@ -50,9 +46,12 @@ class Header extends React.Component {
                         <Nav className="mr-auto">
                             <Nav.Link href="/home">Home</Nav.Link>
                             {(currentUser && !showAdminBoard) && (<Nav.Link href="/catalog">Catalog</Nav.Link>)}
+                            {(currentUser && !showAdminBoard) && (<Nav.Link href="/orders">My Orders</Nav.Link>)}
+                            {(currentUser && !showAdminBoard) && (<Nav.Link href="/review">See Review</Nav.Link>)}
                             {showAdminBoard && (<Nav.Link href="/adminTattoo">Tattoo</Nav.Link>)}
                             {showAdminBoard && (<Nav.Link href="/adminOrders">Orders</Nav.Link>)}
                             {showAdminBoard && (<Nav.Link href="/adminUsers">Users</Nav.Link>)}
+                            {showAdminBoard && (<Nav.Link href="/adminReview">Reviews</Nav.Link>)}
                         </Nav>
                         <Nav>
                             {currentUser

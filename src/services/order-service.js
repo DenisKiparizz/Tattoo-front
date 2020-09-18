@@ -15,7 +15,7 @@ class OrderService {
     }
 
     getOrdersByUserId(userId) {
-        return axios.get(API_URL + userId, {headers: authHeader()})
+        return axios.get(API_URL + "user" + userId, {headers: authHeader()})
     }
 
     deleteOrder(id) {
@@ -26,8 +26,16 @@ class OrderService {
         return axios.get(API_URL, {headers: authHeader()})
     }
 
+    getOrderById(id) {
+        return axios.get(API_URL + id, {headers: authHeader()})
+    }
+
     getTotalPrice(userId) {
         return axios.get(API_URL + "price/" + userId, {headers: authHeader()})
+    }
+
+    updateOrderStatusClose(orderId) {
+        return axios.put(API_URL + orderId, {}, {headers: authHeader()})
     }
 }
 
